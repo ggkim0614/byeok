@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
-export const cleanObject = (obj) => {
+export const cleanObject = (obj: Object) => {
   const filteredEntries = Object.entries(obj).filter(
     ([key, value]) => value !== undefined && value !== "",
   );
   return Object.fromEntries(filteredEntries);
 };
 
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
   }, []);
 };
 
-export const useDebounce = (value, delay) => {
+export const useDebounce = (value: any, delay?: number) => {
   const [debounceValue, setDebounceValue] = useState(value);
 
   useEffect(() => {
