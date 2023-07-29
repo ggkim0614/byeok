@@ -1,10 +1,10 @@
 import { FormEvent } from "react";
-import { useAuth } from "../../context/auth-context";
+import { useAuth } from "../context/auth-context";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
-export const LoginScreen = () => {
-  const { login, user } = useAuth();
+export const RegisterScreen = () => {
+  const { register, user } = useAuth();
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -12,16 +12,11 @@ export const LoginScreen = () => {
       .value;
     const password = (event.currentTarget.elements[1] as HTMLInputElement)
       .value;
-    login({ username, password });
+    register({ username, password });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      {user ? (
-        <div>
-          login successful, username: {user?.name} token: {user?.token}
-        </div>
-      ) : null}
       <div>
         <label htmlFor="username">username</label>
         <input type="text" id="username" />
@@ -30,7 +25,7 @@ export const LoginScreen = () => {
         <label htmlFor="password">password</label>
         <input type="text" id="password" />
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
     </form>
   );
 };
